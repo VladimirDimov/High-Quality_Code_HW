@@ -5,56 +5,59 @@
 
     public class Engine
     {
+        private static void Main()
+        {
+            const int BRAKE_GAME_POINTS = 35;
 
-
-        static void Main(string[] аргументи)
-        {        
-            string command = string.Empty;
-            char[,] playingGrid = createPlayingGrid();
-            char[,] minesPositions = PlaceMines();
-            int pointsCounter = 0;
+            bool isOnBrakeGamePoints = false;
+            bool showMenu = true;
             bool stepOnMine = false;
-            List<Player> champions = new List<Player>(6);
-            int row = 0;
+            char[,] minesPositions = PlaceMines();
+            char[,] playingGrid = CreatePlayingGrid();
             int column = 0;
-            bool gameStarted = true;
-            const int reachedPoints = 35;
-            bool flag2 = false;
+            int pointsCounter = 0;
+            int row = 0;
+            List<Player> champions = new List<Player>(6);
+            string command = string.Empty;
 
             do
             {
-                if (gameStarted)
+                if (showMenu)
                 {
-                    Console.WriteLine("Hajde da igraem na “Mini4KI”. Probvaj si kasmeta da otkriesh poleteta bez mini4ki." +
-                    " Komanda 'top' pokazva klasiraneto, 'restart' po4va nova igra, 'exit' izliza i hajde 4ao!");
+                    Console.WriteLine("Let's play “Mines”. Try to find all fields without mines." +
+                    "\n\nCommands:\n'top' => Shows standings\n'restart' => Start new game\n'exit' => Exit game!");
                     DrawPlayingGrid(playingGrid);
-                    gameStarted = false;
+                    showMenu = false;
                 }
-                Console.Write("Daj red i kolona : ");
+
+                Console.Write("Enter row and column: ");
                 command = Console.ReadLine().Trim();
+
+                bool isValidCommand = int.TryParse(command[0].ToString(), out row) &&
+                    int.TryParse(command[2].ToString(), out column) && row <= playingGrid.GetLength(0) && column <= playingGrid.GetLength(1);
+
                 if (command.Length >= 3)
                 {
-                    if (int.TryParse(command[0].ToString(), out row) &&
-                    int.TryParse(command[2].ToString(), out column) &&
-                        row <= playingGrid.GetLength(0) && column <= playingGrid.GetLength(1))
+                    if (isValidCommand)
                     {
                         command = "turn";
                     }
                 }
+
                 switch (command)
                 {
                     case "top":
                         Standings(champions);
                         break;
                     case "restart":
-                        playingGrid = createPlayingGrid();
+                        playingGrid = CreatePlayingGrid();
                         minesPositions = PlaceMines();
                         DrawPlayingGrid(playingGrid);
                         stepOnMine = false;
-                        gameStarted = false;
+                        showMenu = false;
                         break;
                     case "exit":
-                        Console.WriteLine("4a0, 4a0, 4a0!");
+                        Console.WriteLine("Bye!");
                         break;
                     case "turn":
                         if (minesPositions[row, column] != '*')
@@ -64,9 +67,10 @@
                                 OpenCell(playingGrid, minesPositions, row, column);
                                 pointsCounter++;
                             }
-                            if (reachedPoints == pointsCounter)
+
+                            if (BRAKE_GAME_POINTS == pointsCounter)
                             {
-                                flag2 = true;
+                                isOnBrakeGamePoints = true;
                             }
                             else
                             {
@@ -77,16 +81,17 @@
                         {
                             stepOnMine = true;
                         }
+
                         break;
                     default:
-                        Console.WriteLine("\nGreshka! nevalidna Komanda\n");
+                        Console.WriteLine("\nInvalid command\n");
                         break;
                 }
+
                 if (stepOnMine)
                 {
                     DrawPlayingGrid(minesPositions);
-                    Console.Write("\nHrrrrrr! Umria gerojski s {0} to4ki. " +
-                        "Daj si niknejm: ", pointsCounter);
+                    Console.Write("You stepped on a mine. You reached {0} points. " + "\nEnter your nickname: ", pointsCounter);
                     string nickname = Console.ReadLine();
                     Player player = new Player(nickname, pointsCounter);
                     if (champions.Count < 5)
@@ -110,66 +115,69 @@
                     champions.Sort((Player firstPlayer, Player secondPlayer) => secondPlayer.Points.CompareTo(firstPlayer.Points));
                     Standings(champions);
 
-                    playingGrid = createPlayingGrid();
+                    playingGrid = CreatePlayingGrid();
                     minesPositions = PlaceMines();
                     pointsCounter = 0;
                     stepOnMine = false;
-                    gameStarted = true;
+                    showMenu = true;
                 }
-                if (flag2)
+
+                if (isOnBrakeGamePoints)
                 {
-                    Console.WriteLine("\nBRAVOOOS! Otvri 35 kletki bez kapka kryv.");
+                    Console.WriteLine("\nCongratulations! You reached " + BRAKE_GAME_POINTS + " points.");
                     DrawPlayingGrid(minesPositions);
-                    Console.WriteLine("Daj si imeto, batka: ");
+                    Console.WriteLine("Enter your name:");
                     string name = Console.ReadLine();
                     Player points = new Player(name, pointsCounter);
                     champions.Add(points);
                     Standings(champions);
-                    playingGrid = createPlayingGrid();
+                    playingGrid = CreatePlayingGrid();
                     minesPositions = PlaceMines();
                     pointsCounter = 0;
-                    flag2 = false;
-                    gameStarted = true;
+                    isOnBrakeGamePoints = false;
+                    showMenu = true;
                 }
             }
             while (command != "exit");
-            Console.WriteLine("Made in Bulgaria - Uauahahahahaha!");
-            Console.WriteLine("AREEEEEEeeeeeee.");
+
+            Console.WriteLine("Made in Bulgaria!");
+            Console.WriteLine("Bye!.");
             Console.Read();
         }
 
         private static void Standings(List<Player> points)
         {
-            Console.WriteLine("\nTo4KI:");
+            Console.WriteLine("\nPoints:");
             if (points.Count > 0)
             {
                 for (int i = 0; i < points.Count; i++)
                 {
-                    Console.WriteLine("{0}. {1} --> {2} kutii",
-                        i + 1, points[i].Name, points[i].Points);
+                    Console.WriteLine("{0}. {1} --> {2} points", i + 1, points[i].Name, points[i].Points);
                 }
+
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("prazna klasaciq!\n");
+                Console.WriteLine("Empty standings!\n");
             }
         }
 
-        private static void OpenCell(char[,] playingGrid,
-            char[,] mines, int row, int column)
+        private static void OpenCell(char[,] playingGrid, char[,] mines, int row, int column)
         {
-            char numberOfMines = getSurroundingBombs(mines, row, column);
-            mines[row, column] = numberOfMines;
-            playingGrid[row, column] = numberOfMines;
+            int numberOfMines = GetSurroundingBombs(mines, row, column);
+            mines[row, column] = ConvertIntToChar(numberOfMines);
+            playingGrid[row, column] = ConvertIntToChar(numberOfMines);
         }
 
         private static void DrawPlayingGrid(char[,] board)
         {
             int numberOfRows = board.GetLength(0);
             int numberOfColumns = board.GetLength(1);
+
             Console.WriteLine("\n    0 1 2 3 4 5 6 7 8 9");
             Console.WriteLine("   ---------------------");
+
             for (int i = 0; i < numberOfRows; i++)
             {
                 Console.Write("{0} | ", i);
@@ -177,6 +185,7 @@
                 {
                     Console.Write(string.Format("{0} ", board[i, j]));
                 }
+
                 Console.Write("|");
                 Console.WriteLine();
             }
@@ -184,11 +193,12 @@
             Console.WriteLine("   ---------------------\n");
         }
 
-        private static char[,] createPlayingGrid()
+        private static char[,] CreatePlayingGrid()
         {
             int boardRows = 5;
             int boardColumns = 10;
             char[,] board = new char[boardRows, boardColumns];
+
             for (int i = 0; i < boardRows; i++)
             {
                 for (int j = 0; j < boardColumns; j++)
@@ -216,10 +226,12 @@
             }
 
             List<int> minedCells = new List<int>();
+
             while (minedCells.Count < 15)
             {
                 Random random = new Random();
                 int randomInteger = random.Next(numberOfCells);
+
                 if (!minedCells.Contains(randomInteger))
                 {
                     minedCells.Add(randomInteger);
@@ -228,8 +240,9 @@
 
             foreach (int cellNumber in minedCells)
             {
-                int col = (cellNumber / numberOfColumns);
-                int row = (cellNumber % numberOfColumns);
+                int col = cellNumber / numberOfColumns;
+                int row = cellNumber % numberOfColumns;
+
                 if (row == 0 && cellNumber != 0)
                 {
                     col--;
@@ -239,13 +252,14 @@
                 {
                     row++;
                 }
+
                 playingGrid[col, row - 1] = '*';
             }
 
             return playingGrid;
         }
 
-        private static void smetki(char[,] playingGrid)
+        private static void WriteSurroundingBombsInCell(char[,] playingGrid)
         {
             int column = playingGrid.GetLength(0);
             int row = playingGrid.GetLength(1);
@@ -256,14 +270,19 @@
                 {
                     if (playingGrid[i, j] != '*')
                     {
-                        char kolkoo = getSurroundingBombs(playingGrid, i, j);
-                        playingGrid[i, j] = kolkoo;
+                        int numberOfSurroundingBombs = GetSurroundingBombs(playingGrid, i, j);
+                        playingGrid[i, j] = ConvertIntToChar(numberOfSurroundingBombs);
                     }
                 }
             }
         }
 
-        private static char getSurroundingBombs(char[,] playingGrid, int row, int col)
+        private static char ConvertIntToChar(int number)
+        {
+            return char.Parse(number.ToString());
+        }
+
+        private static int GetSurroundingBombs(char[,] playingGrid, int row, int col)
         {
             int numberOfBombs = 0;
             int numberOfRows = playingGrid.GetLength(0);
@@ -276,6 +295,7 @@
                     numberOfBombs++;
                 }
             }
+
             if (row + 1 < numberOfRows)
             {
                 if (playingGrid[row + 1, col] == '*')
@@ -283,6 +303,7 @@
                     numberOfBombs++;
                 }
             }
+
             if (col - 1 >= 0)
             {
                 if (playingGrid[row, col - 1] == '*')
@@ -290,6 +311,7 @@
                     numberOfBombs++;
                 }
             }
+
             if (col + 1 < numberOfColumns)
             {
                 if (playingGrid[row, col + 1] == '*')
@@ -297,6 +319,7 @@
                     numberOfBombs++;
                 }
             }
+
             if ((row - 1 >= 0) && (col - 1 >= 0))
             {
                 if (playingGrid[row - 1, col - 1] == '*')
@@ -304,6 +327,7 @@
                     numberOfBombs++;
                 }
             }
+
             if ((row - 1 >= 0) && (col + 1 < numberOfColumns))
             {
                 if (playingGrid[row - 1, col + 1] == '*')
@@ -311,6 +335,7 @@
                     numberOfBombs++;
                 }
             }
+
             if ((row + 1 < numberOfRows) && (col - 1 >= 0))
             {
                 if (playingGrid[row + 1, col - 1] == '*')
@@ -318,6 +343,7 @@
                     numberOfBombs++;
                 }
             }
+
             if ((row + 1 < numberOfRows) && (col + 1 < numberOfColumns))
             {
                 if (playingGrid[row + 1, col + 1] == '*')
@@ -325,7 +351,8 @@
                     numberOfBombs++;
                 }
             }
-            return char.Parse(numberOfBombs.ToString());
+
+            return numberOfBombs;
         }
     }
 }
