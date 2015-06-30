@@ -9,7 +9,7 @@
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// Adds various extension methods to the String class.
+    /// Adds variable extension methods to the String class.
     /// </summary>
     public static class StringExtensions
     {
