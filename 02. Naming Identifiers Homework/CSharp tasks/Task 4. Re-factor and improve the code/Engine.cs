@@ -288,68 +288,44 @@
             int numberOfRows = playingGrid.GetLength(0);
             int numberOfColumns = playingGrid.GetLength(1);
 
-            if (row - 1 >= 0)
+            if (row - 1 >= 0 && playingGrid[row - 1, col] == '*')
             {
-                if (playingGrid[row - 1, col] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if (row + 1 < numberOfRows)
+            if (row + 1 < numberOfRows && playingGrid[row + 1, col] == '*')
             {
-                if (playingGrid[row + 1, col] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if (col - 1 >= 0)
+            if (col - 1 >= 0 && playingGrid[row, col - 1] == '*')
             {
-                if (playingGrid[row, col - 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if (col + 1 < numberOfColumns)
+            if (col + 1 < numberOfColumns && playingGrid[row, col + 1] == '*')
             {
-                if (playingGrid[row, col + 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if ((row - 1 >= 0) && (col - 1 >= 0))
+            if ((row - 1 >= 0) && (col - 1 >= 0) && playingGrid[row - 1, col - 1] == '*')
             {
-                if (playingGrid[row - 1, col - 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if ((row - 1 >= 0) && (col + 1 < numberOfColumns))
+            if ((row - 1 >= 0) && (col + 1 < numberOfColumns) && playingGrid[row - 1, col + 1] == '*')
             {
-                if (playingGrid[row - 1, col + 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if ((row + 1 < numberOfRows) && (col - 1 >= 0))
+            if ((row + 1 < numberOfRows) && (col - 1 >= 0) && playingGrid[row + 1, col - 1] == '*')
             {
-                if (playingGrid[row + 1, col - 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
-            if ((row + 1 < numberOfRows) && (col + 1 < numberOfColumns))
+            if ((row + 1 < numberOfRows) && (col + 1 < numberOfColumns) && playingGrid[row + 1, col + 1] == '*')
             {
-                if (playingGrid[row + 1, col + 1] == '*')
-                {
-                    numberOfBombs++;
-                }
+                numberOfBombs++;
             }
 
             return numberOfBombs;
