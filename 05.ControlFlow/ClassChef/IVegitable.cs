@@ -1,0 +1,6 @@
+﻿namespace ClassChef
+{
+    interface IVegitable
+    {
+    }
+}
