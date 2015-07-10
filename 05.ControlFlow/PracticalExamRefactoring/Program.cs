@@ -28,6 +28,10 @@
                     Task4 fourthTask = new Task4();
                     fourthTask.Execute();
                     break;
+                case 5:
+                    Task5 fifthTask = new Task5();
+                    fifthTask.Execute();
+                    break;
                 default:
                     break;
             }
