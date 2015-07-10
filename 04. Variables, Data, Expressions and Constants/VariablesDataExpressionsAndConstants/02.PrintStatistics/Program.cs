@@ -1,4 +1,4 @@
-﻿namespace _02.PrintStatistics
+﻿namespace PrintStatistics
 {
     using System;
 
@@ -13,11 +13,11 @@
         {
             double max = double.MinValue;
 
-            for (int i = 0; i < numberOfElements; i++)
+            for (int index = 0; index < numberOfElements; index++)
             {
-                if (arr[i] > max)
+                if (arr[index] > max)
                 {
-                    max = arr[i];
+                    max = arr[index];
                 }
             }
 
@@ -37,17 +37,17 @@
 
             double sum = 0;
 
-            for (int i = 0; i < numberOfElements; i++)
+            for (int index = 0; index < numberOfElements; index++)
             {
-                sum += arr[i];
+                sum += arr[index];
             }
 
             double average = sum / numberOfElements;
 
-            PrintAvg(average);
+            PrintAverage(average);
         }
 
-        private static void PrintAvg(double p)
+        private static void PrintAverage(double p)
         {
             Console.WriteLine("Average value = " + p);
         }
