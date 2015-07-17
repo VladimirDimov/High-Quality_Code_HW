@@ -2,20 +2,27 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text;
 
-    public class Course
+    public abstract class Course
     {
+        private const int CourseNameMinLength = 2;
+        private const int CourseNameMaxLength = 40;
+        private const int PersonNameMinLength = 2;
+        private const int PersonNameMaxLength = 40;
+
         private string name;
         private string teacherName;
         private IList<string> students;
 
-        public Course(string name)
+        public Course(string courseName)
         {
-            this.Name = name;
+            this.Name = courseName;
+            this.Students = new List<string>();
         }
 
-        public Course(string name, string teacherName)
-            : this(name)
+        public Course(string courseName, string teacherName)
+            : this(courseName)
         {
             this.TeacherName = teacherName;
         }
@@ -40,9 +47,9 @@
                     throw new NullOrEmptyStringException("Course.Name");
                 }
 
-                if (value.Length < 2 || value.Length > 20)
+                if (value.Length < CourseNameMinLength || value.Length > CourseNameMaxLength)
                 {
-                    throw new InvalidStringLengthException("Course.Name", 2, 20);
+                    throw new InvalidStringLengthException("Course.Name", CourseNameMinLength, CourseNameMaxLength);
                 }
 
                 this.name = value;
@@ -63,9 +70,9 @@
                     throw new NullOrEmptyStringException("Course.TeacherName");
                 }
 
-                if (value.Length < 3 || value.Length > 30)
+                if (value.Length < PersonNameMinLength || value.Length > PersonNameMaxLength)
                 {
-                    throw new InvalidStringLengthException("Course.TeacherName", 3, 30);
+                    throw new InvalidStringLengthException("Course.TeacherName", PersonNameMinLength, PersonNameMaxLength);
                 }
 
                 this.teacherName = value;
@@ -81,9 +88,9 @@
 
             set
             {
-                if (value == null || value.Count == 0)
+                if (value as IList<string> == null)
                 {
-                    throw new ArgumentException("Course students cannot be null or empty collection");
+                    throw new ArgumentException("Students collection must be a valid IList of strings");
                 }
 
                 this.students = value;
@@ -97,12 +104,44 @@
                 throw new NullOrEmptyStringException("Course.AddStudent(student)");
             }
 
-            if (student.Length < 3 || student.Length > 30)
+            if (student.Length < PersonNameMinLength || student.Length > PersonNameMaxLength)
             {
-                throw new InvalidStringLengthException("Course.AddStudent(student)", 3, 30);
+                throw new InvalidStringLengthException("Course.AddStudent(student)", PersonNameMinLength, PersonNameMaxLength);
             }
 
             this.Students.Add(student);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.Append(this.GetType().Name + "{ Name = ");
+            result.Append(this.Name);
+
+            if (this.TeacherName != null)
+            {
+                result.Append("; Teacher = ");
+                result.Append(this.TeacherName);
+            }
+
+            result.Append("; Students = ");
+            result.Append(this.GetStudentsAsString());
+            result.Append(" }");
+
+            return result.ToString();
+        }
+
+        private string GetStudentsAsString()
+        {
+            if (this.Students == null || this.Students.Count == 0)
+            {
+                return "{ }";
+            }
+            else
+            {
+                return "{ " + string.Join(", ", this.Students) + " }";
+            }
         }
     }
 }
