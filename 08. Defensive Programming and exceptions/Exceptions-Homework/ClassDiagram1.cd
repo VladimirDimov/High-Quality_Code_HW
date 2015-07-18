@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CSharpExam" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAgAAAAAiAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CSharpExam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Exam" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExamResult" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQkAAAABAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEEIAA=</HashCode>
+      <FileName>ExamResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleMathExam" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>SimpleMathExam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExceptionsHomework.NumberOperations" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NumberOperations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExceptionsHomework.StringOperations">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>StringOperations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
