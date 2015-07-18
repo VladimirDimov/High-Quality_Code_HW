@@ -6,65 +6,59 @@
 
     public class OffsiteCourse : Course
     {
-        public string Name { get; set; }
-        public string TeacherName { get; set; }
-        public IList<string> Students { get; set; }
-        public string Town { get; set; }
+        private const int TownMinLength = 3;
+        private const int TownMaxLength = 40;
 
-        public OffsiteCourse(string name)
+        private string town;
+
+        public OffsiteCourse(string courseName)
+            : base(courseName)
         {
-            this.Name = name;
-            this.TeacherName = null;
-            this.Students = new List<string>();
             this.Town = null;
         }
 
         public OffsiteCourse(string courseName, string teacherName)
+            : base(courseName, teacherName)
         {
-            this.Name = courseName;
-            this.TeacherName = teacherName;
-            this.Students = new List<string>();
-            this.Town = null;
         }
 
         public OffsiteCourse(string courseName, string teacherName, IList<string> students)
+            : base(courseName, teacherName, students)
         {
-            this.Name = courseName;
-            this.TeacherName = teacherName;
-            this.Students = students;
-            this.Town = null;
         }
 
-        private string GetStudentsAsString()
+        public string Town
         {
-            if (this.Students == null || this.Students.Count == 0)
+            get
             {
-                return "{ }";
+                return this.town;
             }
-            else
+
+            set
             {
-                return "{ " + string.Join(", ", this.Students) + " }";
+                if (value != null && (value.Length < TownMinLength || value.Length < TownMaxLength))
+                {
+                    throw new InvalidStringLengthException("Town name", 3, 40);
+                }
+
+                this.town = value;
             }
         }
 
         public override string ToString()
         {
             StringBuilder result = new StringBuilder();
-            result.Append("OffsiteCourse { Name = ");
-            result.Append(this.Name);
-            if (this.TeacherName != null)
-            {
-                result.Append("; Teacher = ");
-                result.Append(this.TeacherName);
-            }
-            result.Append("; Students = ");
-            result.Append(this.GetStudentsAsString());
+
+            result.Append(base.ToString().TrimEnd(new char[] { '}' }));
+
             if (this.Town != null)
             {
                 result.Append("; Town = ");
                 result.Append(this.Town);
             }
+
             result.Append(" }");
+
             return result.ToString();
         }
     }

@@ -17,8 +17,8 @@ namespace InheritanceAndPolymorphism
             Console.WriteLine(localCourse);
 
             localCourse.TeacherName = "Svetlin Nakov";
-            localCourse.Students.Add("Milena");
-            localCourse.Students.Add("Todor");
+            localCourse.AddStudent("Milena");
+            localCourse.AddStudent("Todor");
             Console.WriteLine(localCourse);
 
             OffsiteCourse offsiteCourse = new OffsiteCourse(
