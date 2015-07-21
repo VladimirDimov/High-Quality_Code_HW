@@ -11,6 +11,10 @@
             {
                 throw new ArgumentException("Sides should be positive.");
             }
+            if (a > (b + c) || b > (a + c) || c > (a + b))
+            {
+                throw new ArgumentException("A triangle side cannot be greater than the sum of the others two.");
+            }
 
             double semiPerimeter = (a + b + c) / 2;
             double area = Math.Sqrt(semiPerimeter * (semiPerimeter - a) * (semiPerimeter - b) * (semiPerimeter - c));
@@ -81,18 +85,31 @@
 
         static double CalcDistance(double x1, double y1, double x2, double y2)
         {
-            double distance = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-            return distance;
+            checked
+            {
+                double distance = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+                return distance;
+            }
         }
 
         static bool IsHorizintal(double x1, double y1, double x2, double y2)
         {
+            if (x1==x2 && y1==y2)
+            {
+                throw new ArgumentException("Starting point cannot equal the ending point.");
+            }
+
             bool isHorizontal = (y1 == y2);
             return isHorizontal;
         }
 
         static bool IsVertical(double x1, double y1, double x2, double y2)
         {
+            if (x1 == x2 && y1 == y2)
+            {
+                throw new ArgumentException("Starting point cannot equal the ending point.");
+            }
+
             bool isVertical = (x1 == x2);
             return isVertical;
         }
@@ -111,6 +128,7 @@
             PrintAsNumber(50, "%");
 
             Console.WriteLine(CalcDistance(3, -1, 3, 2.5));
+            Console.WriteLine(CalcDistance(0, 0, double.MaxValue, 2.5));
             Console.WriteLine("Horizontal? " + IsHorizintal(3, -1, 3, 2.5));
             Console.WriteLine("Vertical? " + IsVertical(3, -1, 3, 2.5));
 
