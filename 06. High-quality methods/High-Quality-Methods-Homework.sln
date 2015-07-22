@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringTaskTwo", "Refac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringTaskThree", "RefactoringTaskThree\RefactoringTaskThree.csproj", "{A083B19A-B28E-40AB-BA7D-C5FF8B0D44A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefactoringTaskFive", "RefactoringTaskFive\RefactoringTaskFive.csproj", "{C9020D94-64BD-4355-B8E3-840A06AEF8CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,8 +33,15 @@ Global
 		{A083B19A-B28E-40AB-BA7D-C5FF8B0D44A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A083B19A-B28E-40AB-BA7D-C5FF8B0D44A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A083B19A-B28E-40AB-BA7D-C5FF8B0D44A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9020D94-64BD-4355-B8E3-840A06AEF8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9020D94-64BD-4355-B8E3-840A06AEF8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9020D94-64BD-4355-B8E3-840A06AEF8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9020D94-64BD-4355-B8E3-840A06AEF8CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
