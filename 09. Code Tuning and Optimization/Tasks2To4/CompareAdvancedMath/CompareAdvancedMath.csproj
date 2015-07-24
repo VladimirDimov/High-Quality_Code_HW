@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80A40DC4-356F-4698-A412-DBD94DA40C0E}</ProjectGuid>
+    <ProjectGuid>{0958638B-A62D-463A-B7B9-B52E88F94A9C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CompareAdvancedMath</RootNamespace>

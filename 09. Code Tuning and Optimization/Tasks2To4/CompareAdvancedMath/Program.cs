@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompareAdvancedMath
+namespace AdvancedMath
 {
     class Program
     {
         static void Main()
         {
-            //var meter = new PerformanceMeter(1);
-            //meter.GetReport(numericTypes.floatType);
-            //meter.GetReport(numericTypes.doubleType);
-            //meter.GetReport(numericTypes.decimalType);
+            var meter = new PerformanceMeter();
+            Console.WriteLine(meter.GetReportForSin(100000));
+            Console.WriteLine(meter.GetReportForSqrt(100000));
+            Console.WriteLine(meter.GetReportForNaturalLog(100000));
         }
     }
 }

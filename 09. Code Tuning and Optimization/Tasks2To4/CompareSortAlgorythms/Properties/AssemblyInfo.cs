@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AdvancedMath")]
+[assembly: AssemblyTitle("CompareSortAlgorythms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AdvancedMath")]
+[assembly: AssemblyProduct("CompareSortAlgorythms")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e515a671-573b-4d50-8165-55a63e621402")]
+[assembly: Guid("e83d83a7-da2b-4ac4-bd5b-dbcf4ed97e27")]
 
 // Version information for an assembly consists of the following four values:
 //

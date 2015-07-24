@@ -1,115 +1,112 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Diagnostics;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
+﻿namespace AdvancedMath
+{
+    using System;
+    using System.Diagnostics;
+    using System.Text;
 
-//namespace CompareAdvancedMath
-//{
-//    public enum numericTypes { floatType, doubleType, decimalType };
+    public enum numericTypes { floatType, doubleType, decimalType };
 
-//    public class PerformanceMeter
-//    {
-//        private int numberOfCycles;
-//        private const float floatNumber = 5;
-//        private const double doubleNumber = 5;
-//        private const decimal decimalNumber = 5;
-//        private double storeResult = 0;
+    public class PerformanceMeter
+    {
+        private const float FloatNumber = 20f;
+        private const double DoubleNumber = 20;
+        private const decimal DecimalNumber = 20m;
 
+        public string GetReportForSin(int numberOfLoops)
+        {
+            var report = new StringBuilder();
+            report.AppendLine("             Report for Sinus             ");
+            report.AppendLine("==========================================");
+            report.AppendLine("Float:   " + MeasureSinOfFloat(numberOfLoops) + " mlSec");
+            report.AppendLine("Double:  " + MeasureSinOfDouble(numberOfLoops) + " mlSec");
+            report.AppendLine("Decimal: " + MeasureSinOfDecimal(numberOfLoops) + " mlSec");
+            report.AppendLine("==========================================");
 
-//        public PerformanceMeter(int cycles)
-//        {
-//            this.NumberOfCycles = cycles;
-//        }
+            return report.ToString();
+        }
 
-//        public int NumberOfCycles
-//        {
-//            get
-//            {
-//                return this.numberOfCycles;
-//            }
-//            private set
-//            {
-//                if (value <= 0)
-//                {
-//                    throw new ArgumentException("Number of cycles must be greater than 0.");
-//                }
+        public string GetReportForSqrt(int numberOfLoops)
+        {
+            var report = new StringBuilder();
+            report.AppendLine("           Report for Square root         ");
+            report.AppendLine("==========================================");
+            report.AppendLine("Float:   " + MeasureSinOfFloat(numberOfLoops) + " mlSec");
+            report.AppendLine("Double:  " + MeasureSinOfDouble(numberOfLoops) + " mlSec");
+            report.AppendLine("Decimal: " + MeasureSqrtOfDecimal(numberOfLoops) + " mlSec");
+            report.AppendLine("==========================================");
 
-//                this.numberOfCycles = value;
-//            }
-//        }
+            return report.ToString();
+        }
 
-//        public string GetReport(numericTypes type)
-//        {
-//            dynamic number = 0;
+        public string GetReportForNaturalLog(int numberOfLoops)
+        {
+            var report = new StringBuilder();
+            report.AppendLine("        Report for Natural logarithm      ");
+            report.AppendLine("==========================================");
+            report.AppendLine("Float:   " + MeasureNaturalLogOfFloat(numberOfLoops) + " mlSec");
+            report.AppendLine("Double:  " + MeasureSinOfDouble(numberOfLoops) + " mlSec");
+            report.AppendLine("Decimal: " + MeasureNaturalLogOfDecimal(numberOfLoops) + " mlSec");
+            report.AppendLine("==========================================");
 
-//            switch (type)
-//            {
-//                case numericTypes.floatType:
-//                    number = floatNumber;
-//                    break;
-//                case numericTypes.doubleType:
-//                    number = doubleNumber;
-//                    break;
-//                case numericTypes.decimalType:
-//                    number = decimalNumber;
-//                    break;
-//                default:
-//                    break;
-//            }
+            return report.ToString();
+        }
 
-//            var builder = new StringBuilder();
-//            builder.Append("Type: " + type + Environment.NewLine);
-//            builder.Append("Number of cycles: " + this.numberOfCycles + Environment.NewLine);
-//            builder.Append("Square root: " + this.MeasureSquareRoot(number) + Environment.NewLine);
-//            builder.Append("Natural logarithm: " + this.MeasureNaturalLogarithm(number) + Environment.NewLine);
-//            builder.Append("Sin: " + this.MeasureSinus(number) + Environment.NewLine);
+        public long MeasureSinOfFloat(int loops)
+        {
+            return MeasureTime(Math.Sin, FloatNumber, loops);
+        }
 
-//            return builder.ToString();
-//        }
+        public long MeasureSinOfDouble(int loops)
+        {
+            return MeasureTime(Math.Sin, DoubleNumber, loops);
+        }
 
-//        private void SquareRoot(dynamic number)
-//        {
-//             storeResult = Math.Sqrt((double)number);
-//        }
+        public long MeasureSinOfDecimal(int loops)
+        {
+            return MeasureTime(Math.Sin, DecimalNumber, loops);
+        }
 
-//        private void NaturalLogarithm(dynamic number)
-//        {
-//             storeResult = Math.Log((double)number);
-//        }
+        public long MeasureSqrtOfFloat(int loops)
+        {
+            return MeasureTime(Math.Sqrt, FloatNumber, loops);
+        }
 
-//        private void Sinus(dynamic number)
-//        {
-//             storeResult = Math.Sin((double)number);
-//        }
+        public long MeasureSqrtOfDouble(int loops)
+        {
+            return MeasureTime(Math.Sqrt, DoubleNumber, loops);
+        }
 
-//        private long MeasureSquareRoot(dynamic number)
-//        {
-//            return MeasureTime(SquareRoot(number), number);
-//        }
+        public long MeasureSqrtOfDecimal(int loops)
+        {
+            return MeasureTime(Math.Sqrt, DecimalNumber, loops);
+        }
 
-//        private long MeasureNaturalLogarithm(dynamic number)
-//        {
-//            return MeasureTime(NaturalLogarithm(number), number);
-//        }
+        public long MeasureNaturalLogOfFloat(int loops)
+        {
+            return MeasureTime(Math.Log, FloatNumber, loops);
+        }
 
-//        private long MeasureSinus(dynamic number)
-//        {
-//            return MeasureTime(Sinus(number), number);
-//        }
+        public long MeasureNaturalLogOfDouble(int loops)
+        {
+            return MeasureTime(Math.Log, DoubleNumber, loops);
+        }
 
-//        private long MeasureTime(Action<dynamic> mathOperation, dynamic number)
-//        {
-//            var timer = new Stopwatch();
-//            timer.Start();
-//            for (int i = 0; i < this.numberOfCycles; i++)
-//            {
-//                mathOperation(number);
-//            }
-//            timer.Stop();
+        public long MeasureNaturalLogOfDecimal(int loops)
+        {
+            return MeasureTime(Math.Log, DecimalNumber, loops);
+        }
 
-//            return timer.ElapsedMilliseconds;
-//        }
-//    }
-//}
+        private long MeasureTime(Func<double, double> mathOperation, dynamic inputNumber, int loops)
+        {
+            var timer = new Stopwatch();
+            for (int i = 0; i < loops; i++)
+            {
+                timer.Start();
+                mathOperation((double)inputNumber);
+                timer.Stop();
+            }
+
+            return timer.ElapsedMilliseconds;
+        }
+    }
+}
