@@ -4,150 +4,131 @@
     using System.Diagnostics;
     using System.Text;
 
-    public enum numberTypes { typeInt, typeLong, typeFloat, typeDouble, typeDecimal };
+    public delegate dynamic MathOperation(dynamic number);
 
     class PerformanceMeter
     {
-        private int numberOfCycles;
         private int intNumber = 1;
         private long longNumber = 1;
-        private float floatNumber = 1;
-        private double doubleNumber = 1;
-        private decimal decimalNumber = 1m;
+        private float floatNumber = 1.5f;
+        private double doubleNumber = 1.5;
+        private decimal decimalNumber = 1.5m;
 
-        dynamic tmp;
-
-        public PerformanceMeter(int numberOfCycles)
+        public string GetReportForInt(int numberOfLoops)
         {
-            this.NumberOfCycles = numberOfCycles;
+            var report = new StringBuilder();
+
+            report.AppendLine("          Report for int          ");
+            report.AppendLine("==================================");
+            report.AppendLine("Number of loops: " + numberOfLoops);
+            report.AppendLine("Add: " + MeasureTime(Add, intNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Subtract: " + MeasureTime(Subtract, intNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Increment: " + MeasureTime(Increment, intNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Multiply: " + MeasureTime(Multiply, intNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Devide: " + MeasureTime(Devide, intNumber, numberOfLoops) + " mlSec");
+
+            return report.ToString();
         }
 
-        public int NumberOfCycles
+        public string GetReportForLong(int numberOfLoops)
         {
-            get
-            {
-                return this.numberOfCycles;
-            }
+            var report = new StringBuilder();
 
-            private set
-            {
-                if (value <= 0)
-                {
-                    throw new ArgumentException("Number of cycles must be greater than 0.");
-                }
+            report.AppendLine("          Report for long          ");
+            report.AppendLine("==================================");
+            report.AppendLine("Number of loops: " + numberOfLoops);
+            report.AppendLine("Add: " + MeasureTime(Add, longNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Subtract: " + MeasureTime(Subtract, longNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Increment: " + MeasureTime(Increment, longNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Multiply: " + MeasureTime(Multiply, longNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Devide: " + MeasureTime(Devide, longNumber, numberOfLoops) + " mlSec");
 
-                this.numberOfCycles = value;
-            }
+            return report.ToString();
         }
 
-        public string GetReport(numberTypes type)
+        public string GetReportForFloat(int numberOfLoops)
         {
-            dynamic number = 0;
+            var report = new StringBuilder();
 
-            switch (type)
-            {
-                case numberTypes.typeInt:
-                    number = intNumber;
-                    break;
-                case numberTypes.typeLong:
-                    number = longNumber;
-                    break;
-                case numberTypes.typeFloat:
-                    number = floatNumber;
-                    break;
-                case numberTypes.typeDouble:
-                    number = doubleNumber;
-                    break;
-                case numberTypes.typeDecimal:
-                    number = decimalNumber;
-                    break;
-            }
+            report.AppendLine("          Report for float          ");
+            report.AppendLine("==================================");
+            report.AppendLine("Number of loops: " + numberOfLoops);
+            report.AppendLine("Add: " + MeasureTime(Add, floatNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Subtract: " + MeasureTime(Subtract, floatNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Increment: " + MeasureTime(Increment, floatNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Multiply: " + MeasureTime(Multiply, floatNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Devide: " + MeasureTime(Devide, floatNumber, numberOfLoops) + " mlSec");
 
-            var builder = new StringBuilder();
-            builder.Append("Report for " + type + Environment.NewLine);
-            builder.Append("Number of cycles: " + this.NumberOfCycles + Environment.NewLine);
-            builder.Append("Add: ");
-            builder.Append(MeasureAdd(number) + " mlsec");
-            builder.Append(Environment.NewLine);
-
-            builder.Append("Substract: ");
-            builder.Append(MeasureSubstract(number) + " mlsec");
-            builder.Append(Environment.NewLine);
-
-            builder.Append("Increment: ");
-            builder.Append(MeasureIncreament(number) + " mlsec");
-            builder.Append(Environment.NewLine);
-
-            builder.Append("Multiply: ");
-            builder.Append(MeasureMultiply(number) + " mlsec");
-            builder.Append(Environment.NewLine);
-
-            builder.Append("Devide: ");
-            builder.Append(MeasureDevide(number) + " mlsec");
-            builder.Append(Environment.NewLine);
-
-            return builder.ToString();
+            return report.ToString();
         }
 
-        private void Add(dynamic number)
+        public string GetReportForDouble(int numberOfLoops)
         {
-            tmp = number + number;
+            var report = new StringBuilder();
+
+            report.AppendLine("          Report for double          ");
+            report.AppendLine("==================================");
+            report.AppendLine("Number of loops: " + numberOfLoops);
+            report.AppendLine("Add: " + MeasureTime(Add, doubleNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Subtract: " + MeasureTime(Subtract, doubleNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Increment: " + MeasureTime(Increment, doubleNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Multiply: " + MeasureTime(Multiply, doubleNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Devide: " + MeasureTime(Devide, doubleNumber, numberOfLoops) + " mlSec");
+
+            return report.ToString();
         }
 
-        private void Substract(dynamic number)
+        public string GetReportForDecimal(int numberOfLoops)
         {
-            var tmp = number - number;
+            var report = new StringBuilder();
+
+            report.AppendLine("          Report for decimal          ");
+            report.AppendLine("==================================");
+            report.AppendLine("Number of loops: " + numberOfLoops);
+            report.AppendLine("Add: " + MeasureTime(Add, decimalNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Subtract: " + MeasureTime(Subtract, decimalNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Increment: " + MeasureTime(Increment, decimalNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Multiply: " + MeasureTime(Multiply, decimalNumber, numberOfLoops) + " mlSec");
+            report.AppendLine("Devide: " + MeasureTime(Devide, decimalNumber, numberOfLoops) + " mlSec");
+
+            return report.ToString();
         }
 
-        private void Increment(dynamic number)
+
+        private dynamic Add(dynamic number)
         {
-            number++;
+            return number + number;
         }
 
-        private void Multiply(dynamic number)
+        private dynamic Subtract(dynamic number)
         {
-            tmp = number * number;
+            return number - number;
         }
 
-        private void Devide(dynamic number)
+        private dynamic Increment(dynamic number)
         {
-            tmp = number / number;
+            return number++;
         }
 
-        private long MeasureAdd(dynamic number)
+        private dynamic Multiply(dynamic number)
         {
-            return MeasureTime(() => Add(number));
+            return number * number;
         }
 
-        private long MeasureSubstract(dynamic number)
+        private dynamic Devide(dynamic number)
         {
-            return MeasureTime(() => Substract(number));
+            return number / number;
         }
 
-        private long MeasureIncreament(dynamic number)
-        {
-            return MeasureTime(() => Increment(number));
-        }
-
-        private long MeasureMultiply(dynamic number)
-        {
-            return MeasureTime(() => Multiply(number));
-        }
-
-        private long MeasureDevide(dynamic number)
-        {
-            return MeasureTime(() => Devide(number));
-        }
-
-        private long MeasureTime(Action MathOperation)
+        private long MeasureTime(MathOperation mathOperation, dynamic operationNumber, int numberOfLoops)
         {
             var watch = new Stopwatch();
-            watch.Start();
-            for (int i = 0; i < this.NumberOfCycles; i++)
+            for (int i = 0; i < numberOfLoops; i++)
             {
-                MathOperation();
+                watch.Start();
+                mathOperation(operationNumber);
+                watch.Stop();
             }
-            watch.Stop();
 
             return watch.ElapsedMilliseconds;
         }

@@ -6,12 +6,12 @@
     {
         static void Main()
         {
-            var meter = new PerformanceMeter(10000);
-            Console.WriteLine(meter.GetReport(numberTypes.typeInt));
-            Console.WriteLine(meter.GetReport(numberTypes.typeLong));
-            Console.WriteLine(meter.GetReport(numberTypes.typeFloat));
-            Console.WriteLine(meter.GetReport(numberTypes.typeDouble));
-            Console.WriteLine(meter.GetReport(numberTypes.typeDecimal));
+            var meter = new PerformanceMeter();
+            Console.WriteLine(meter.GetReportForInt(1000));
+            Console.WriteLine(meter.GetReportForLong(1000));
+            Console.WriteLine(meter.GetReportForFloat(1000));
+            Console.WriteLine(meter.GetReportForDouble(1000));
+            Console.WriteLine(meter.GetReportForDecimal(1000));
         }
     }
 }
