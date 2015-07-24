@@ -10,9 +10,9 @@
         {
             Console.WriteLine(GetReportForRandomArrays(100, 1000));
             Console.WriteLine();
-            Console.WriteLine(GetReportForReversed(100, 1000));
+            Console.WriteLine(GetReportForReversed(1000, 10000));
             Console.WriteLine();
-            Console.WriteLine(GetReportForSortedArray(100, 1000));
+            Console.WriteLine(GetReportForSortedArray(1000, 10000));
         }
 
         private static string GetReportForRandomArrays(int numberOfArrays, int arraysLength)
