@@ -10,7 +10,7 @@ namespace SolarSystem
         const double EarthRotationPeriod = 1.0;
         const double SunRotationPeriod = 25.0;
         const double TwoPi = Math.PI * 2;
-        private const decimal RotationStep = 0.05m;
+        private const decimal RotationStep = 0.00005m;
 
         private double _daysPerSecond = 2;
         private DateTime _startTime;

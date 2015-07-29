@@ -26,7 +26,6 @@
             var insertionSortMilliseconds = tester.Test(InsertionSort.Sort, collectionOfRandomArrays);
 
             var builder = new StringBuilder();
-            builder.AppendLine("======================================");
             builder.AppendLine("       Report for random arrays       ");
             builder.AppendLine("======================================");
             builder.AppendLine("Number of arrays: " + numberOfArrays);
@@ -50,7 +49,6 @@
             var insertionSortMilliseconds = tester.Test(InsertionSort.Sort, reversedArray);
 
             var builder = new StringBuilder();
-            builder.AppendLine("======================================");
             builder.AppendLine("       Report for reversed arrays       ");
             builder.AppendLine("======================================");
             builder.AppendLine("Array length: " + arrayLength);
@@ -74,7 +72,6 @@
             var insertionSortMilliseconds = tester.Test(InsertionSort.Sort, sortedArray);
 
             var builder = new StringBuilder();
-            builder.AppendLine("======================================");
             builder.AppendLine("       Report for sorted arrays       ");
             builder.AppendLine("======================================");
             builder.AppendLine("Array length: " + arrayLength);
