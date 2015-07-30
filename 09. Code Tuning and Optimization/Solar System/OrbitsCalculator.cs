@@ -6,26 +6,20 @@ namespace SolarSystem
 {
     class OrbitsCalculator : INotifyPropertyChanged
     {
-        const double EarthYear = 365.25;
-        const double EarthRotationPeriod = 1.0;
-        const double SunRotationPeriod = 25.0;
-        const double TwoPi = Math.PI * 2;
-        private const decimal RotationStep = 0.00005m;
-
-        private double _daysPerSecond = 2;
         private DateTime _startTime;
         private double _startDays;
         private DispatcherTimer _timer;
 
+        const double EarthYear = 365.25;
+        const double EarthRotationPeriod = 1.0;
+        const double SunRotationPeriod = 25.0;
+        const double TwoPi = Math.PI * 2;
+
+        private double _daysPerSecond = 2;
         public double DaysPerSecond
         {
-            get { 
-                return _daysPerSecond;
-            }
-            set {
-                _daysPerSecond = value; 
-                Update("DaysPerSecond"); 
-            }
+            get { return _daysPerSecond; }
+            set { _daysPerSecond = value; Update("DaysPerSecond"); }
         }
 
         public double EarthOrbitRadius { get { return 40; } set { } }
@@ -75,7 +69,7 @@ namespace SolarSystem
         void OnTimerTick(object sender, EventArgs e)
         {
             var now = DateTime.Now;
-            this.Days += (now-_startTime).TotalMilliseconds * DaysPerSecond / 1000.0 * (ReverseTime?-1:1);
+            Days += (now-_startTime).TotalMilliseconds * DaysPerSecond / 1000.0 * (ReverseTime?-1:1);
             _startTime = now;
             Update("Days");
             OnTimeChanged();
@@ -99,11 +93,10 @@ namespace SolarSystem
 
         private void EarthRotation()
         {
-			for (decimal step = 0; step <= 360; step+= RotationStep)
+			for (decimal step = 0; step <= 360; step+=05m)
 			{
 				EarthRotationAngle = ((double)step) * Days / EarthRotationPeriod;
 			}
-            
             Update("EarthRotationAngle");
         }
 
