@@ -72,7 +72,7 @@ namespace StudentsAndCourses.Tests
         {
             "",
             "A",          
-            new string('A', 100)
+            new string('A', 101)
         };
 
     }

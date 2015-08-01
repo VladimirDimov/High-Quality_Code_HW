@@ -14,7 +14,6 @@
             foreach (var schoolName in constants.validSchoolNames)
             {
                 School newSchool = new School(schoolName);
-
                 Assert.IsInstanceOfType(newSchool, typeof(School));
             }
         }

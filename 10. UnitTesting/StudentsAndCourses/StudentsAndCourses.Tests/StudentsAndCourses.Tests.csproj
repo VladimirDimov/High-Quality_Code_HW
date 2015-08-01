@@ -54,6 +54,7 @@
     <Compile Include="SchoolTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestingConstants.cs" />
+    <Compile Include="Course.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentsAndCourses\StudentsAndCourses.csproj">

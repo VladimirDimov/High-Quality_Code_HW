@@ -4,7 +4,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class SchoolTest2
+    public class StudentTest
     {
         private TestingConstants constants = new TestingConstants();
 
@@ -87,6 +87,6 @@
             {
                 var newStudent = new Student(constants.validStudentFirstNames[0], constants.validStudentLastNames[0], number);
             }
-        }    
+        }        
     }
 }
