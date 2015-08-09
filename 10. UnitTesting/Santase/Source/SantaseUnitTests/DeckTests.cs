@@ -7,7 +7,7 @@ using NUnit.Framework;
 using Santase.Logic.Cards;
 using Santase.Logic;
 
-namespace SantaseUnitTests
+namespace Santase.Test
 {
     public class DeckTests
     {

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Santase.Logic", "Santase.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Santase.ConsoleUI", "Santase.ConsoleUI\Santase.ConsoleUI.csproj", "{D955B803-9058-49A4-B97C-6C13B01B4C70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SantaseUnitTests", "SantaseUnitTests\SantaseUnitTests.csproj", "{AC4FB654-08A6-4A32-8DA2-924E69EE4A66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Santase.Test", "SantaseUnitTests\Santase.Test.csproj", "{AC4FB654-08A6-4A32-8DA2-924E69EE4A66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

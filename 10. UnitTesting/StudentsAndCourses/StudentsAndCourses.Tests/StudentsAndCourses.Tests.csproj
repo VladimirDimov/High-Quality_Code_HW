@@ -50,11 +50,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Student.cs" />
+    <Compile Include="StudentTest.cs" />
     <Compile Include="SchoolTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestingConstants.cs" />
-    <Compile Include="Course.cs" />
+    <Compile Include="CourseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StudentsAndCourses\StudentsAndCourses.csproj">

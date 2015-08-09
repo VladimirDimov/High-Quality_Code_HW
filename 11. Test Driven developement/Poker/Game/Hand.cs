@@ -14,7 +14,9 @@ namespace Poker
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            var report = "[" + string.Join(" | ", this.Cards) + "]";
+
+            return report;
         }
     }
 }
