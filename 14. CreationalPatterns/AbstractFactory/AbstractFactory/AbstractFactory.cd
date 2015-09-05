@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FactoryMethod.AbstractFactory.UnitAbstractFactory" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractFactory\AbstractUnitFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FactoryMethod.AbstractFactory.SimpleUnitFactory" Collapsed="true">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAQAAIDAIACAAAAIAAAAAABAAAAAAAIAAAA=</HashCode>
+      <FileName>AbstractFactory\SimpleUnitFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FactoryMethod.AbstractFactory.SuperUnitFactory" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABACAAAACBABAAAAAAAACAAABAAAAIAAAAgAI=</HashCode>
+      <FileName>AbstractFactory\SuperUnitFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
