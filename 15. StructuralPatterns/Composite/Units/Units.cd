@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Composite.Units.Commander">
+    <Position X="1" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAACAAQAAAEAAAAAAAgAAAAA=</HashCode>
+      <FileName>Units\Commander.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Composite.Units.Marine">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Marine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Composite.Units.Trooper">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Trooper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Composite.Units.Unit">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Composite.Units.IContainer">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAACAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\IContainer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Composite.Units.IUnit">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\IUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
