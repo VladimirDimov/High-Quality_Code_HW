@@ -1,9 +1,9 @@
-﻿##Abstract Factory##
+##Abstract Factory##
 
 За разлика от **Factory Method** при **Abstract Factory** се създава фамилия от свързани обекти в рамките на едно фактори.
 
 Изплзва се при системи, които се променят често.
 
-Прилага се при следната схема.
+Прилага се при следната схема:
 
-<img src="abstract.gif" />
+![Alt text](abstract.gif)
