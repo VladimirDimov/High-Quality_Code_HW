@@ -37,9 +37,10 @@
         {
             var info = new StringBuilder();
 
-            info.AppendLine("Marine:");
+            info.AppendLine("Commander:");
             info.AppendLine("Name: " + base.Name);
             info.AppendLine("Life points: " + base.LifePoints);
+            info.AppendLine("----------------------");
 
             foreach (var unit in this.Units)
             {
