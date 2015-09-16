@@ -44,11 +44,12 @@
     <Compile Include="Application.cs" />
     <Compile Include="IPerson.cs" />
     <Compile Include="Person.cs" />
-    <Compile Include="PersonPrinterProxy.cs" />
+    <Compile Include="ProxyPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
