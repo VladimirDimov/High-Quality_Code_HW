@@ -26,10 +26,10 @@
             wifiControler = new WiFiControler();
             soundControler = new SoundControler();
 
-            activateDefaultMode();
+            АctivateDefaultMode();
         }
 
-        public void activateDefaultMode()
+        public void АctivateDefaultMode()
         {
             this.ActiveMode = GsmModes.DEFAULT;
 
@@ -40,7 +40,7 @@
             soundControler.SetSoundLevel(SoundLevel.NORMAL);
         }
 
-        public void activateFlightMode()
+        public void АctivateFlightMode()
         {
             this.ActiveMode = GsmModes.FLIGHT;
 
@@ -49,14 +49,14 @@
             soundControler.SetSoundLevel(SoundLevel.LOW);
         }
 
-        public void activateMeetingMode()
+        public void АctivateMeetingMode()
         {
             this.ActiveMode = GsmModes.MEETING;
 
             soundControler.SetSoundLevel(SoundLevel.SILENT);
         }
 
-        public void activateStandByMode()
+        public void АctivateStandByMode()
         {
             this.ActiveMode = GsmModes.STAND_BY;
 

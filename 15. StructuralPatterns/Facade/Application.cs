@@ -13,13 +13,13 @@ namespace Facade
             var gsmControler = new GsmModesControler();
             Console.WriteLine(gsmControler.ToString());
 
-            gsmControler.activateMeetingMode();
+            gsmControler.АctivateMeetingMode();
             Console.WriteLine(gsmControler.ToString());
 
-            gsmControler.activateFlightMode();
+            gsmControler.АctivateFlightMode();
             Console.WriteLine(gsmControler.ToString());
 
-            gsmControler.activateStandByMode();
+            gsmControler.АctivateStandByMode();
             Console.WriteLine(gsmControler.ToString());
         }
     }
