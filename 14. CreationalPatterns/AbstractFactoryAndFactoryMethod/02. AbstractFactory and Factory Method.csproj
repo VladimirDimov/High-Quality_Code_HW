@@ -61,16 +61,10 @@
     <Compile Include="AbstractFactory\AbstractUnitFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AbstractFactory.md" />
     <None Include="AbstractFactory\AbstractFactory.cd" />
     <None Include="App.config" />
-    <None Include="FactoryMethod.md" />
     <None Include="FactoryMethod\FactoryMethod.cd" />
     <None Include="Units\Unit.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="abstract.gif" />
-    <Content Include="factoryMethod.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Composite.Units.Commander">
-    <Position X="1" Y="4" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAACAAQAAAEAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAQAQAEAAEAAAAgAAAAA=</HashCode>
       <FileName>Units\Commander.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Composite.Units.Marine">
-    <Position X="4.5" Y="4" Width="1.5" />
+    <Position X="4" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Units\Marine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Composite.Units.Trooper">
-    <Position X="2.75" Y="4" Width="1.5" />
+    <Position X="2.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAA=</HashCode>
       <FileName>Units\Trooper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Composite.Units.Unit">
-    <Position X="2.75" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
@@ -31,14 +31,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Composite.Units.IContainer">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAACAAAAAAAACAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAQAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Units\IContainer.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Composite.Units.IUnit">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Units\IUnit.cs</FileName>

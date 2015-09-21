@@ -8,6 +8,9 @@
         DEFAULT, FLIGHT, MEETING, STAND_BY
     }
 
+    /// <summary>
+    /// The Facade class
+    /// </summary>
     class GsmModesControler
     {
         private GpsControler gpsControler;

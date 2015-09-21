@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C26188E0-3672-47B7-A54D-7008416D713E}</ProjectGuid>
+    <ProjectGuid>{0385E54E-8632-4DA1-8073-51902D2AE50C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Composite</RootNamespace>
-    <AssemblyName>Composite</AssemblyName>
+    <RootNamespace>Bridge</RootNamespace>
+    <AssemblyName>Bridge</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,18 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application.cs" />
+    <Compile Include="DefaultConsole.cs" />
+    <Compile Include="PrinterA.cs" />
+    <Compile Include="BlueConsole.cs" />
+    <Compile Include="ConsoleSettings.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="PrinterB.cs" />
+    <Compile Include="PrinterC.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Units\Commander.cs" />
-    <Compile Include="Units\IContainer.cs" />
-    <Compile Include="Units\IUnit.cs" />
-    <Compile Include="Units\Marine.cs" />
-    <Compile Include="Units\Trooper.cs" />
-    <Compile Include="Units\Unit.cs" />
+    <Compile Include="RedConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Units.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
