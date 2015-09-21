@@ -1,5 +1,8 @@
 ﻿namespace ChainOfResponsibility
 {
+    /// <summary>
+    /// The 'Handler' abstract class
+    /// </summary>
     public abstract class NumberPrinter
     {
         protected NumberPrinter successor;

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace State
+﻿namespace State
 {
-    class Account
+    public class Account
     {
         private string name;
         private State state;

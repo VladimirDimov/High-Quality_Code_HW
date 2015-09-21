@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DoFactory.GangOfFour.Command.RealWorld
+namespace DoFactory.GangOfFour.Observer.RealWorld
 {
     /// <summary>
     /// MainApp startup class for Real-World 
-    /// Command Design Pattern.
+    /// Observer Design Pattern.
     /// </summary>
     class MainApp
     {
@@ -14,20 +14,16 @@ namespace DoFactory.GangOfFour.Command.RealWorld
         /// </summary>
         static void Main()
         {
-            // Create user and let her compute
-            User user = new User();
+            // Create IBM stock and attach investors
+            IBM ibm = new IBM("IBM", 120.00);
+            ibm.Attach(new Investor("Sorros"));
+            ibm.Attach(new Investor("Berkshire"));
 
-            // User presses calculator buttons
-            user.Compute('+', 100);
-            user.Compute('-', 50);
-            user.Compute('*', 10);
-            user.Compute('/', 2);
-
-            // Undo 4 commands
-            user.Undo(4);
-
-            // Redo 3 commands
-            user.Redo(3);
+            // Fluctuating prices will notify investors
+            ibm.Price = 120.10;
+            ibm.Price = 121.00;
+            ibm.Price = 120.50;
+            ibm.Price = 120.75;
 
             // Wait for user
             Console.ReadKey();
@@ -35,141 +31,107 @@ namespace DoFactory.GangOfFour.Command.RealWorld
     }
 
     /// <summary>
-    /// The 'Command' abstract class
+    /// The 'Subject' abstract class
     /// </summary>
-    abstract class Command
+    abstract class Stock
     {
-        public abstract void Execute();
-        public abstract void UnExecute();
-    }
-
-    /// <summary>
-    /// The 'ConcreteCommand' class
-    /// </summary>
-    class CalculatorCommand : Command
-    {
-        private char _operator;
-        private int _operand;
-        private Calculator _calculator;
+        private string _symbol;
+        private double _price;
+        private List<IInvestor> _investors = new List<IInvestor>();
 
         // Constructor
-        public CalculatorCommand(Calculator calculator,
-          char @operator, int operand)
+        public Stock(string symbol, double price)
         {
-            this._calculator = calculator;
-            this._operator = @operator;
-            this._operand = operand;
+            this._symbol = symbol;
+            this._price = price;
         }
 
-        // Gets operator
-        public char Operator
+        public void Attach(IInvestor investor)
         {
-            set { _operator = value; }
+            _investors.Add(investor);
         }
 
-        // Get operand
-        public int Operand
+        public void Detach(IInvestor investor)
         {
-            set { _operand = value; }
+            _investors.Remove(investor);
         }
 
-        // Execute new command
-        public override void Execute()
+        public void Notify()
         {
-            _calculator.Operation(_operator, _operand);
-        }
-
-        // Unexecute last command
-        public override void UnExecute()
-        {
-            _calculator.Operation(Undo(_operator), _operand);
-        }
-
-        // Returns opposite operator for given operator
-        private char Undo(char @operator)
-        {
-            switch (@operator)
+            foreach (IInvestor investor in _investors)
             {
-                case '+': return '-';
-                case '-': return '+';
-                case '*': return '/';
-                case '/': return '*';
-                default: throw new
-                 ArgumentException("@operator");
+                investor.Update(this);
             }
+
+            Console.WriteLine("");
         }
-    }
 
-    /// <summary>
-    /// The 'Receiver' class
-    /// </summary>
-    class Calculator
-    {
-        private int _curr = 0;
-
-        public void Operation(char @operator, int operand)
+        // Gets or sets the price
+        public double Price
         {
-            switch (@operator)
+            get { return _price; }
+            set
             {
-                case '+': _curr += operand; break;
-                case '-': _curr -= operand; break;
-                case '*': _curr *= operand; break;
-                case '/': _curr /= operand; break;
-            }
-            Console.WriteLine(
-              "Current value = {0,3} (following {1} {2})",
-              _curr, @operator, operand);
-        }
-    }
-
-    /// <summary>
-    /// The 'Invoker' class
-    /// </summary>
-    class User
-    {
-        // Initializers
-        private Calculator _calculator = new Calculator();
-        private List<Command> _commands = new List<Command>();
-        private int _current = 0;
-
-        public void Redo(int levels)
-        {
-            Console.WriteLine("\n---- Redo {0} levels ", levels);
-            // Perform redo operations
-            for (int i = 0; i < levels; i++)
-            {
-                if (_current < _commands.Count - 1)
+                if (_price != value)
                 {
-                    Command command = _commands[_current++];
-                    command.Execute();
+                    _price = value;
+                    Notify();
                 }
             }
         }
 
-        public void Undo(int levels)
+        // Gets the symbol
+        public string Symbol
         {
-            Console.WriteLine("\n---- Undo {0} levels ", levels);
-            // Perform undo operations
-            for (int i = 0; i < levels; i++)
-            {
-                if (_current > 0)
-                {
-                    Command command = _commands[--_current] as Command;
-                    command.UnExecute();
-                }
-            }
+            get { return _symbol; }
+        }
+    }
+
+    /// <summary>
+    /// The 'ConcreteSubject' class
+    /// </summary>
+    class IBM : Stock
+    {
+        // Constructor
+        public IBM(string symbol, double price)
+            : base(symbol, price)
+        {
+        }
+    }
+
+    /// <summary>
+    /// The 'Observer' interface
+    /// </summary>
+    interface IInvestor
+    {
+        void Update(Stock stock);
+    }
+
+    /// <summary>
+    /// The 'ConcreteObserver' class
+    /// </summary>
+    class Investor : IInvestor
+    {
+        private string _name;
+        private Stock _stock;
+
+        // Constructor
+        public Investor(string name)
+        {
+            this._name = name;
         }
 
-        public void Compute(char @operator, int operand)
+        public void Update(Stock stock)
         {
-            // Create command operation and execute it
-            Command command = new CalculatorCommand(
-              _calculator, @operator, operand);
-            command.Execute();
+            Console.WriteLine("Notified {0} of {1}'s " +
+              "change to {2:C}", _name, stock.Symbol, stock.Price);
+        }
 
-            // Add command to undo list
-            _commands.Add(command);
-            _current++;
+        // Gets or sets the stock
+        public Stock Stock
+        {
+            get { return _stock; }
+            set { _stock = value; }
         }
     }
 }

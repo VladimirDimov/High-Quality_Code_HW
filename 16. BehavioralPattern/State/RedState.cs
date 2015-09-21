@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace State
+﻿namespace State
 {
-    class RedState : State
+    using System;
+
+    public class RedState : State
     {
         public RedState(Account account, decimal ballance)
-            :base(account, ballance)
+            : base(account, ballance)
         {
             base.interrest = 0;
         }

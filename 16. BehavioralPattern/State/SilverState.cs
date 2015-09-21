@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace State
+﻿namespace State
 {
-    class SilverState : State
+    public class SilverState : State
     {
         public SilverState(Account account, decimal ballance)
-            :base(account, ballance)
+            : base(account, ballance)
         {
             base.interrest = 0;
         }
@@ -17,7 +12,7 @@ namespace State
         {
             if (base.Account.Ballance < 1000)
             {
-                base.Account.State = new RedState(base.Account,base.Ballance);
+                base.Account.State = new RedState(base.Account, base.Ballance);
             }
             else if (base.Account.Ballance > 5000)
             {

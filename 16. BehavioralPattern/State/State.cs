@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace State
+﻿namespace State
 {
-    abstract class State
+    public abstract class State
     {
         protected decimal interrest;
         private decimal ballance;

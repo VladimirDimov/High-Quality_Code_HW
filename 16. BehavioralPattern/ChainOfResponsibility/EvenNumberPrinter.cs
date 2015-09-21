@@ -1,8 +1,10 @@
 ﻿namespace ChainOfResponsibility
 {
+    /// <summary>
+    /// The 'ConcreteHandler' class
+    /// </summary>
     public class EvenNumberPrinter : NumberPrinter
     {
-
         public override void Print(int number)
         {
             if (number % 2 != 0 && this.successor != null)

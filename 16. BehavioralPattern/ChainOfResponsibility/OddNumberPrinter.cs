@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// The 'ConcreteHandler' class
+    /// </summary>
     public class OddNumberPrinter : NumberPrinter
     {
         public override void Print(int number)

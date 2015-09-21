@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace State
+﻿namespace State
 {
-    class GoldenState : State
+    public class GoldenState : State
     {
         private Account account;
 
         public GoldenState(Account account, decimal ballance)
-            :base(account, ballance)
+            : base(account, ballance)
         {
             base.interrest = 0.05m;
         }
