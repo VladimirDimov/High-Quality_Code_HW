@@ -3,6 +3,9 @@
     using System;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The Invoker
+    /// </summary>
     public class User : IUser
     {
         private PlayField field;

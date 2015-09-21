@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Command
 {
-    class Program
+    class Application
     {
         static void Main()
         {

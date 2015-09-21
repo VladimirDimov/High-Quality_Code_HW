@@ -46,7 +46,7 @@
     <Compile Include="PlayField.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IUser.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Application.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

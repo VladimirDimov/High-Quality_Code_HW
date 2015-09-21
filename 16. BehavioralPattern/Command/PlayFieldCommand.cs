@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Command
 {
+    /// <summary>
+    /// The concrete command class
+    /// </summary>
     public class PlayFieldCommand : ICommand
     {
         private Directions direction;
