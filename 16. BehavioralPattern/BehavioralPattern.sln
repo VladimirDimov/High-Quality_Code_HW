@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{025EB280-D621-4CC7-AE71-AD0FA769F297}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator", "Mediator\Mediator.csproj", "{0F30FD38-0068-4D63-865C-0DECE03BFA9B}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visitor", "Visitor\Visitor.csproj", "{C33E33C5-76D1-4224-911B-FAC6A7CE9366}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command", "Command\Command.csproj", "{8B4E3E5F-9EBA-403E-AB6E-BD7F1856599D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Observer", "Observer\Observer.csproj", "{D2083EF7-0051-4B23-A81B-FCA958757B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +51,10 @@ Global
 		{8B4E3E5F-9EBA-403E-AB6E-BD7F1856599D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B4E3E5F-9EBA-403E-AB6E-BD7F1856599D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B4E3E5F-9EBA-403E-AB6E-BD7F1856599D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2083EF7-0051-4B23-A81B-FCA958757B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2083EF7-0051-4B23-A81B-FCA958757B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2083EF7-0051-4B23-A81B-FCA958757B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2083EF7-0051-4B23-A81B-FCA958757B20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
