@@ -28,7 +28,7 @@
       <FileName>LibraryItem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Decorator.MainApp" Collapsed="true">
+  <Class Name="Decorator.MainApp">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
