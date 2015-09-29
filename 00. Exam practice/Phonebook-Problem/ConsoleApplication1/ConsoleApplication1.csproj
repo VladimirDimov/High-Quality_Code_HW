@@ -44,8 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandParsers\CommandInfo.cs" />
+    <Compile Include="CommandParsers\CommandParser.cs" />
+    <Compile Include="CommandParsers\ICommandInfo.cs" />
+    <Compile Include="CommandParsers\ICommandParser.cs" />
+    <Compile Include="Command\AddPhoneCommand.cs" />
+    <Compile Include="Command\ChangePhoneCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\ListCommand.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="IPhonebookRepository.cs" />
+    <Compile Include="PhoneFormaters\IPhoneFormater.cs" />
+    <Compile Include="PhoneFormaters\PhoneStringBuilderFormater.cs" />
+    <Compile Include="Printer\ConsolePrinter.cs" />
+    <Compile Include="Printer\IPrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PhonebookRepository.cs" />
   </ItemGroup>

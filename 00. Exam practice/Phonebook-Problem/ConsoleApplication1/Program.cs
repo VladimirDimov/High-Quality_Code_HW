@@ -1,195 +1,49 @@
 ﻿namespace ConsoleApplication1
 {
+    using ConsoleApplication1.Command;
+    using ConsoleApplication1.CommandParsers;
+    using ConsoleApplication1.Printer;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
 
-    class PhonebookEntryPoint
+    public class PhonebookEntryPoint
     {
-        private const string code = "+359";
-
-        private static IPhonebookRepository data = new PhonebookRepository(); // this works!
-        private static StringBuilder output = new StringBuilder();
-
         static void Main()
         {
+            IPhonebookRepository data = new PhonebookRepository();
+            StringBuilder output = new StringBuilder();
+            IPrinter consolePrinter = new ConsolePrinter();
             string input;
+            var commandParser = new CommandParser(consolePrinter);
 
             while ((input = Console.ReadLine()) != "End")
             {
-                int inputParametersOpenBracketIndex = input.IndexOf('(');
+                var commandInfo = commandParser.Parse(input);
+                var commandName = commandInfo.Name;
+                var commandParameters = commandInfo.Parameters;
 
-                if (inputParametersOpenBracketIndex == -1)
+                ICommand command;
+                if ((commandName.StartsWith("AddPhone")) && (commandParameters.Length >= 2))
                 {
-                    Console.WriteLine("error!");
-                    Environment.Exit(0);
+                    command = new AddPhoneCommand(output, data, consolePrinter);
                 }
-
-                string command = input.Substring(0, inputParametersOpenBracketIndex);
-
-                if (!input.EndsWith(")"))
+                else if ((commandName == "ChangePhone") && (commandParameters.Length == 2))
                 {
-                    Main();
+                    command = new ChangePhoneCommand(output, data, consolePrinter);
                 }
-
-                string commandParametersString = input.Substring(inputParametersOpenBracketIndex + 1, input.Length - inputParametersOpenBracketIndex - 2);
-
-                string[] commandParameters = commandParametersString.Split(',');
-
-                for (int j = 0; j < commandParameters.Length; j++)
+                else if ((commandName == "List") && (commandParameters.Length == 2))
                 {
-                    commandParameters[j] = commandParameters[j].Trim();
-                }
-
-                if ((command.StartsWith("AddPhone")) && (commandParameters.Length >= 2))
-                {
-                    Cmd("AddPhoneCommand", commandParameters);
-                }
-                else if ((command == "ChangePhone") && (commandParameters.Length == 2))
-                {
-                    Cmd("ChangePhoneCommand", commandParameters);
-                }
-                else if ((command == "List") && (commandParameters.Length == 2))
-                {
-                    Cmd("ListCommand", commandParameters);
+                    command = new ListCommand(output, data, consolePrinter);
                 }
                 else
                 {
                     throw new ArgumentException("Invalid command");
                 }
+
+                command.Execute(commandParameters);
             }
 
             Console.Write(output);
-        }
-
-
-
-        private static void Cmd(string cmd, string[] strings)
-        {
-
-            if (cmd == "AddPhoneCommand") // first command
-            {
-                string name = strings[0]; 
-                var phoneNumbers = strings.Skip(1).ToList();
-
-                for (int i = 0; i < phoneNumbers.Count; i++)
-                {
-                    phoneNumbers[i] = FormatPhoneNumber(phoneNumbers[i]);
-                }
-
-                bool flag = data.AddPhone(name, phoneNumbers);
-
-                if (flag)
-                {
-                    Print("Phone entry created.");
-                }
-                else
-                {
-                    Print("Phone entry merged");
-                }
-            }
-            else if (cmd == "ChangePhoneCommand") // second command
-            {
-                Print("" + data.ChangePhone(FormatPhoneNumber(strings[0]), FormatPhoneNumber(strings[1])) + " numbers changed");
-            }
-            else // third command
-                try
-                {
-                    IEnumerable<Entry> entries = data.ListEntries(int.Parse(strings[0]), int.Parse(strings[1]));
-
-                    foreach (var entry in entries)
-                    {
-                        Print(entry.ToString());
-                    }
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    Print("Invalid range");
-                }
-        }
-
-        private static string FormatPhoneNumber(string notFormattedNumber)
-        {
-            StringBuilder outputNumber = new StringBuilder();
-
-            for (int i = 0; i <= output.Length; i++)
-            {
-                outputNumber.Clear();
-
-                foreach (char symbol in notFormattedNumber)
-                {
-                    if (char.IsDigit(symbol) || (symbol == '+'))
-                    {
-                        outputNumber.Append(symbol);
-                    }
-                }
-
-                if (outputNumber.Length >= 2 && outputNumber[0] == '0' && outputNumber[1] == '0')
-                {
-                    outputNumber.Remove(0, 1); outputNumber[0] = '+';
-                }
-
-                while (outputNumber.Length > 0 && outputNumber[0] == '0')
-                {
-                    outputNumber.Remove(0, 1);
-                }
-
-                if (outputNumber.Length > 0 && outputNumber[0] != '+')
-                {
-                    outputNumber.Insert(0, code);
-                }
-
-                outputNumber.Clear();
-
-                foreach (char symbol in notFormattedNumber) if (char.IsDigit(symbol) || (symbol == '+')) outputNumber.Append(symbol);
-
-                if (outputNumber.Length >= 2 && outputNumber[0] == '0' && outputNumber[1] == '0')
-                {
-                    outputNumber.Remove(0, 1); outputNumber[0] = '+';
-                }
-
-                while (outputNumber.Length > 0 && outputNumber[0] == '0')
-                {
-                    outputNumber.Remove(0, 1);
-                }
-
-                if (outputNumber.Length > 0 && outputNumber[0] != '+')
-                {
-                    outputNumber.Insert(0, code);
-                }
-
-                outputNumber.Clear();
-
-                foreach (char symbol in notFormattedNumber)
-                {
-                    if (char.IsDigit(symbol) || (symbol == '+'))
-                    {
-                        outputNumber.Append(symbol);
-                    }
-                }
-
-                if (outputNumber.Length >= 2 && outputNumber[0] == '0' && outputNumber[1] == '0')
-                {
-                    outputNumber.Remove(0, 1); outputNumber[0] = '+';
-                }
-
-                while (outputNumber.Length > 0 && outputNumber[0] == '0')
-                {
-                    outputNumber.Remove(0, 1);
-                }
-
-                if (outputNumber.Length > 0 && outputNumber[0] != '+')
-                {
-                    outputNumber.Insert(0, code);
-                }
-            }
-
-            return outputNumber.ToString();
-        }
-        private static void Print(string text)
-        {
-            output.AppendLine(text);
         }
     }
 }
