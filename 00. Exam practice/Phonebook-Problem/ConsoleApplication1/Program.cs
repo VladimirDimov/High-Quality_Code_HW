@@ -1,6 +1,7 @@
 ﻿namespace ConsoleApplication1
 {
     using ConsoleApplication1.Command;
+    using ConsoleApplication1.Command.CommandFactory;
     using ConsoleApplication1.CommandParsers;
     using ConsoleApplication1.Printer;
     using System;
@@ -15,6 +16,7 @@
             IPrinter consolePrinter = new ConsolePrinter();
             string input;
             var commandParser = new CommandParser(consolePrinter);
+            var commandFactory = new CommandFactory(output, data, consolePrinter);
 
             while ((input = Console.ReadLine()) != "End")
             {
@@ -22,25 +24,8 @@
                 var commandName = commandInfo.Name;
                 var commandParameters = commandInfo.Parameters;
 
-                ICommand command;
-                if ((commandName.StartsWith("AddPhone")) && (commandParameters.Length >= 2))
-                {
-                    command = new AddPhoneCommand(output, data, consolePrinter);
-                }
-                else if ((commandName == "ChangePhone") && (commandParameters.Length == 2))
-                {
-                    command = new ChangePhoneCommand(output, data, consolePrinter);
-                }
-                else if ((commandName == "List") && (commandParameters.Length == 2))
-                {
-                    command = new ListCommand(output, data, consolePrinter);
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid command");
-                }
-
-                command.Execute(commandParameters);
+                var command = commandFactory.CreateCommand(commandInfo.Name);
+                command.Execute(commandInfo.Parameters);
             }
 
             Console.Write(output);

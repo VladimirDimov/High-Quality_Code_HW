@@ -2,6 +2,7 @@
 {
     using ConsoleApplication1.PhoneFormaters;
     using ConsoleApplication1.Printer;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -19,7 +20,7 @@
             this.printer = printer;
         }
 
-        public void Execute(string[] parameters)
+        public void Execute(IList<string> parameters)
         {
             string name = parameters[0];
             var phoneNumbers = parameters.Skip(1).ToList();

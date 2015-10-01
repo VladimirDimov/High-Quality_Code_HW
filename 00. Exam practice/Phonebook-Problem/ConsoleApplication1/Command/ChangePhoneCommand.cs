@@ -2,6 +2,7 @@
 {
     using ConsoleApplication1.PhoneFormaters;
     using ConsoleApplication1.Printer;
+    using System.Collections.Generic;
     using System.Text;
 
     class ChangePhoneCommand : ICommand
@@ -18,7 +19,7 @@
             this.printer = printer;
         }
 
-        public void Execute(string[] parameters)
+        public void Execute(IList<string> parameters)
         {
             this.printer.Print("" + data.ChangePhone(this.phoneFormatter.Format(parameters[0], this.output), this.phoneFormatter.Format(parameters[1], this.output)) + " numbers changed");
         }

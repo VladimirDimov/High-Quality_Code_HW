@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApplication1
+﻿namespace ConsoleApplication1
 {
-    class Entry : IComparable<Entry>
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    public class Entry : IComparable<Entry>
     {
-        private string name; 
+        private string name;
         private string name2;
 
         public string Name

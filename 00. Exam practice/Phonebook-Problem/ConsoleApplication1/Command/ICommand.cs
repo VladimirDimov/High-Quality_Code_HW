@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApplication1.Command
+﻿namespace ConsoleApplication1.Command
 {
-    interface ICommand
+    using System;
+    using System.Collections.Generic;
+
+    public interface ICommand
     {
-        void Execute(string[] parameters);
+        void Execute(IList<String> parameters);
     }
 }

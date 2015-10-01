@@ -8,7 +8,7 @@ namespace ConsoleApplication1.CommandParsers
 {
     interface ICommandInfo
     {
-        public string Name { get; }
-        public IEnumerable<string> Parameters { get; set; }
+        string Name { get; }
+        IList<string> Parameters { get; set; }
     }
 }

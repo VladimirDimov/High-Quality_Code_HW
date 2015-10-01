@@ -5,9 +5,9 @@
     class CommandInfo : ICommandInfo
     {
         private string name;
-        private IEnumerable<string> parameters;
+        private IList<string> parameters;
 
-        public CommandInfo(string name, IEnumerable<string> parametres)
+        public CommandInfo(string name, IList<string> parametres)
         {
             this.Name = name;
             this.Parameters = parametres;
@@ -26,13 +26,13 @@
             }
         }
 
-        public IEnumerable<string> Parameters
+        public IList<string> Parameters
         {
             get
             {
                 return this.parameters;
             }
-            private set
+            set
             {
                 this.parameters = value;
             }

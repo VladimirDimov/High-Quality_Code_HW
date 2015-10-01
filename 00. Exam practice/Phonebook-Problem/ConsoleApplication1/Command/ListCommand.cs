@@ -20,7 +20,7 @@
             this.printer = printer;
         }
 
-        public void Execute(string[] parameters)
+        public void Execute(IList<string> parameters)
         {
             try
             {
