@@ -9,7 +9,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Command.PlayField">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIQAgAAEAIAAAAAAAAAAAAAAIAAAAEAEAAA=</HashCode>
       <FileName>PlayField.cs</FileName>
@@ -23,7 +23,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Command.User">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACIAgAAAIIABAAAAAAAAAABAAAAAAAAAAAAAAAAgAA=</HashCode>
       <FileName>User.cs</FileName>

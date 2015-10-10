@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ChainOfResponsibility.EvenNumberPrinter">
-    <Position X="0.5" Y="3.25" Width="1.5" />
+    <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>EvenNumberPrinter.cs</FileName>
@@ -22,7 +22,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ChainOfResponsibility.OddNumberPrinter">
-    <Position X="3" Y="3.25" Width="1.5" />
+    <Position X="2.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>OddNumberPrinter.cs</FileName>

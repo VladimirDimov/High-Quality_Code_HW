@@ -59,9 +59,9 @@
         public void Move(Directions direction)
         {
             var newCommand = new PlayFieldCommand(this.field, direction);
-            newCommand.Execute();            
+            newCommand.Execute();
             this.commands.Add(newCommand);
-            currentCommandNumber++;
+            currentCommandNumber = this.commands.Count;
         }
     }
 }
