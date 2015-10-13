@@ -51,7 +51,7 @@ namespace Observer
                 if (_price != value)
                 {
                     _price = value;
-                    Notify();
+                    Notify(); // !!!
                 }
             }
         }

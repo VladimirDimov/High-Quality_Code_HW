@@ -11,8 +11,7 @@ namespace FlyWeight
     /// </summary>
     class CharacterFactory
     {
-        private Dictionary<char, Character> _characters =
-          new Dictionary<char, Character>();
+        private Dictionary<char, Character> _characters = new Dictionary<char, Character>();
 
         public Character GetCharacter(char key)
         {

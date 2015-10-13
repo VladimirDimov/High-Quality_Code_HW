@@ -2,7 +2,7 @@
 {
     public class GoldenState : State
     {
-        private Account account;
+        //private Account account;
 
         public GoldenState(Account account, decimal ballance)
             : base(account, ballance)
